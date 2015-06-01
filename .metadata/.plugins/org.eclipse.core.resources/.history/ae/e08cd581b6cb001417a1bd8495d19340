@@ -1,0 +1,63 @@
+from django.shortcuts import render_to_response, get_object_or_404
+#from django.http import Http404,HttpResponse, HttpResponseRedirect
+#from google import search
+from django.template import RequestContext
+from pygoogle import pygoogle
+import requests
+from grin import POST
+from itertools import islice
+import collections
+from _abcoll import Iterable
+from timeit import itertools
+#from google import search
+# Create your views here.
+
+global infereddic 
+infereddic = {}
+global s_term 
+def take(n,iterable):
+    return list(islice(iterable,n))
+
+def khoj(request):
+    if request.POST:
+        #infereddic.clear()
+        if 'term' in request.POST:
+            s_term = request.POST['term']
+            #infereddic = {s_term:"123"}
+            #print infereddic
+            #print request.POST.getElementById('srch')
+            if s_term in infereddic.keys():
+                return render_to_response('khoj.html',{'result': infereddic[s_term]},context_instance=RequestContext(request))
+            else :
+                n=0
+                infereddic.setdefault(s_term, {})
+                res = pygoogle(s_term)
+                res.pages = 2
+                top_10 = {}
+                for k,v in res.search().iteritems():
+                    if n<10:
+                        top_10[k]=v
+                        n += 1
+                    else :
+                        break
+                    
+                        #top_10 = collections.OrderedDict(res.search())
+                        #top_10 = itertools.islice(top_10.items(),0,10)
+                        #top_10 = take(10,res.search())
+                return render_to_response('khoj.html',{'result': top_10}, context_instance=RequestContext(request))
+            
+    elif 'clicked' in request.GET :
+        urls = request.GET.get('url')
+        tle = request.GET.get('title')
+        print urls
+        print tle
+       # print request.POST.get('query')
+        #print infereddic
+        #print request.GET.getElementById('srch')
+        infereddic.setdefault(request.GET.get('query'), {})
+        infereddic['google'][urls]= tle
+                    
+        return render_to_response('khoj.html', context_instance=RequestContext(request))  
+            # return HttpResponseRedirect("/")
+    else :
+        return render_to_response('khoj.html', context_instance=RequestContext(request))

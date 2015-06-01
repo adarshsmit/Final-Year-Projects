@@ -1,0 +1,4 @@
+from django import forms
+
+class PostForm(forms.Form):
+    Search_Term = forms.CharField(max_length=50)

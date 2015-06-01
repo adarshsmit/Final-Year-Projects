@@ -1,0 +1,143 @@
+from django.shortcuts import render_to_response, get_object_or_404
+from django.http import Http404,HttpResponse, HttpResponseRedirect
+from django.template import RequestContext
+from pygoogle import pygoogle
+from django import forms
+from khoj.forms import PostForm
+from collections import OrderedDict
+
+import numpy as np
+import pandas as pd
+import nltk
+import re
+import os
+import codecs
+from sklearn import feature_extraction
+
+from bs4 import BeautifulSoup
+import urllib
+
+
+
+
+
+global infereddic 
+infereddic = {}
+global s_term
+
+def khoj(request):
+    #form = PostForm(request.POST)
+    #s_term = request.POST.get('s_term',request.GET.get('s_term',None))
+    s_term =PostForm(request.POST)
+    top_10 = {}
+    dummy = OrderedDict()
+    dummy2 = OrderedDict()
+    if request.POST:
+        s_term =PostForm(request.POST)
+        dummy = OrderedDict()
+        #dummy2.clear()
+        if s_term.is_valid():
+            
+            print s_term.cleaned_data
+            #s_term.save()
+            if s_term.cleaned_data.values()[0] in infereddic.keys():
+                dummy = infereddic[s_term.cleaned_data.values()[0]]
+            else :
+                infereddic.setdefault(s_term.cleaned_data.values()[0], {})
+            print infereddic
+            result = pygoogle(s_term.cleaned_data)
+            result.pages = 2
+            top_10 = {}
+            n=0
+            print "dummmmmmmyy" 
+            print dummy
+            for k,v in result.search().iteritems():
+                if n<10:
+                    if k in dummy.keys():
+                        n+=1
+                    else:
+                        top_10[k]=v
+                        n += 1
+                else :
+                    break
+            print "top_100->"
+            print top_10
+            if dummy:
+                
+                dummy2 = OrderedDict(dummy.items()+top_10.items())
+                print "dummyyy"
+                print dummy
+                print "2"
+                print dummy2
+            else:
+                dummy2 = top_10
+            
+            if 'select-id' in request.POST:
+                selected_ids = request.POST.getlist('select-id',[])
+                for i in selected_ids:
+                    #print "This is id"+i
+                    for k,v in dummy2.iteritems():
+                        #print k+"-------"+v
+                        if v==i[:-1]:
+                            #print v
+                            infereddic[s_term.cleaned_data.values()[0]][k]=v
+                            #print k
+            print infereddic
+                #print selected_ids
+                #print s_term.cleaned_data
+                
+    return render_to_response('khoj.html',{'form':s_term,'result': dummy2}, context_instance=RequestContext(request))
+    
+    
+    
+    
+    '''if request.POST:
+        if 'term' in request.POST:
+            s_term = request.POST['term']
+            if s_term in infereddic.keys():
+                dummy = infereddic[s_term]
+                return render_to_response('khoj.html',{'result': dummy}, context_instance=RequestContext(request))
+                
+            else :
+                n=0
+                infereddic.setdefault(s_term, {})
+                res = pygoogle(s_term)
+                res.pages = 2
+                top_10 = {}
+                for k,v in res.search().iteritems():
+                    if n<10:
+                        top_10[k]=v
+                        n += 1
+                    else :
+                        break
+                dummy = top_10
+                render_to_response('khoj.html',{'result': dummy}, context_instance=RequestContext(request))
+                if 'clicked' in request.POST:
+                    urls = request.POST['url']
+                    tle = request.POST['title']
+                    infereddic[s_term][urls]=tle
+            return render_to_response('khoj.html',{'result': dummy}, context_instance=RequestContext(request))
+            '''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+MODULES_MANAGER_V2
+Test.__init__|D:\Projects\Test\Test\__init__.py
+Test.settings|D:\Projects\Test\Test\settings.py
+Test.urls|D:\Projects\Test\Test\urls.py
+Test.wsgi|D:\Projects\Test\Test\wsgi.py
+khoj.__init__|D:\Projects\Test\khoj\__init__.py
+khoj.admin|D:\Projects\Test\khoj\admin.py
+khoj.forms|D:\Projects\Test\khoj\forms.py
+khoj.migrations.__init__|D:\Projects\Test\khoj\migrations\__init__.py
+khoj.models|D:\Projects\Test\khoj\models.py
+khoj.pygoogle|D:\Projects\Test\khoj\pygoogle.py
+khoj.tests|D:\Projects\Test\khoj\tests.py
+khoj.views|D:\Projects\Test\khoj\views.py
+manage|D:\Projects\Test\manage.py

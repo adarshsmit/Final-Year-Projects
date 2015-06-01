@@ -1,0 +1,75 @@
+-- VERSION_4
+-- START DISKCACHE
+D:\Projects\.metadata\.plugins\org.eclipse.core.resources\.projects\Test\com.python.pydev.analysis\v2_indexcache
+khoj.migrations.__init__|1426220817773|D:\Projects\Test\khoj\migrations\__init__.py
+khoj.admin|1426220817757|D:\Projects\Test\khoj\admin.py
+Test.__init__|1426220756443|D:\Projects\Test\Test\__init__.py
+Test.urls|1426221327359|D:\Projects\Test\Test\urls.py
+khoj.tests|1426220817773|D:\Projects\Test\khoj\tests.py
+khoj.pygoogle|1422107945786|D:\Projects\Test\khoj\pygoogle.py
+manage|1426220756412|D:\Projects\Test\manage.py
+Test.wsgi|1426220756443|D:\Projects\Test\Test\wsgi.py
+Test.settings|1426221002788|D:\Projects\Test\Test\settings.py
+khoj.views|1433132027894|D:\Projects\Test\khoj\views.py
+khoj.__init__|1426220817773|D:\Projects\Test\khoj\__init__.py
+khoj.forms|1432718228122|D:\Projects\Test\khoj\forms.py
+khoj.models|1426220817757|D:\Projects\Test\khoj\models.py
+-- END DISKCACHE
+-- START DICTIONARY
+11
+10=pygoogle.get_result_count
+3=Test.wsgi
+9=pygoogle.__setup_logging
+8=pygoogle.__init__
+11=PostForm
+2=Test.settings
+6=Test.urls
+7=pygoogle
+4=khoj.views
+1=khoj.pygoogle
+5=khoj.forms
+-- END DICTIONARY
+-- START TREE 1
+26
+__a|1|__author__!11@
+__v|1|__version__!11@
+all|1|ALLOWED_HOSTS!19@
+app|1|application!27@
+bas|1|BASE_DIR!19@
+dat|1|DATABASES!19@
+deb|1|DEBUG!19@
+fil|2|FILTER_ON!11@FILTER_OFF!11@
+inf|2|infereddic!35@infereddic2!35@
+ins|1|INSTALLED_APPS!19@
+kho|1|khoj!34@
+lan|1|LANGUAGE_CODE!19@
+mai|1|main!10@
+mid|1|MIDDLEWARE_CLASSES!19@
+pos|1|PostForm!41@
+pyg|1|pygoogle!9@
+roo|1|ROOT_URLCONF!19@
+rsz|2|RSZ_LARGE!11@RSZ_SMALL!11@
+saf|3|SAFE_OFF!11@SAFE_ACTIVE!11@SAFE_MODERATE!11@
+sec|1|SECRET_KEY!19@
+sta|1|STATIC_URL!19@
+tem|1|TEMPLATES!19@
+tim|1|TIME_ZONE!19@
+url|2|urlpatterns!51@URL!11@
+use|3|USE_L10N!19@USE_I18N!19@USE_TZ!19@
+wsg|1|WSGI_APPLICATION!19@
+-- END TREE
+-- START TREE 2
+12
+__i|1|__init__!7&10@
+__s|2|__search__!7&10@__setup_logging!7&10@
+dis|1|display_results!7&10@
+fil|1|filter!8&11@
+get|2|get_urls!7&10@get_result_count!7&10@
+hl|1|hl!8&11@
+log|1|logger!9&11@
+pag|2|pages!8&11@pages!10&11@
+que|2|QUERY!11&43@query!8&11@
+rsz|1|rsz!8&11@
+saf|1|safe!8&11@
+sea|2|search_page_wise!7&10@search!7&10@
+-- END TREE
